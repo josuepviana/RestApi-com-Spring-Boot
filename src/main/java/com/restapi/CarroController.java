@@ -2,6 +2,7 @@ package com.restapi;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AllArgsConstructor;
 
@@ -24,8 +25,9 @@ public class CarroController {
 
     @GetMapping("/carro/{id}")
     public Carro getCarroById(@PathVariable Long id){
-        return repository.findById(id).get();
+        return repository.findById(id).orElse(null);
     }
+
     @PutMapping("/carro/{id}")
     public Carro updateCarro(@PathVariable Long id, @RequestBody Carro carro){
         carro.setId(id);

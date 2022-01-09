@@ -1,12 +1,11 @@
 package com.restapi;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -20,4 +19,8 @@ public class Carro {
     String marca;
     String modelo;
     Integer ano;
+    @Column(updatable = false)
+    final LocalDateTime cadastradoEm = LocalDateTime.now();
+    /*public void setId(Long id2) {
+    }*/
 }
